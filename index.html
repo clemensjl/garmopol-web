@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garmopol — Season 2</title>
+<meta name="description" content="Garmopol kommt zurück. Citybuild und SMP, Java und Bedrock, eigene Plugins. Season 2 ist in Aufbau — der Discord ist offen.">
+<meta property="og:title" content="Garmopol — Season 2">
+<meta property="og:description" content="Der Server, mit dem du 2023 gespielt hast, kommt zurück. Season 2 in Aufbau.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://garmopol.net">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230a0f14'/%3E%3Crect x='4' y='2' width='8' height='2' fill='%23fbbf24'/%3E%3Crect x='2' y='4' width='2' height='8' fill='%23fbbf24'/%3E%3Crect x='12' y='4' width='2' height='8' fill='%23fbbf24'/%3E%3Crect x='4' y='12' width='8' height='2' fill='%23fbbf24'/%3E%3Crect x='6' y='6' width='4' height='2' fill='%23fbbf24'/%3E%3Crect x='8' y='8' width='2' height='2' fill='%23fbbf24'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0f14; --surface:#101820; --line:#1c2833;
+  --emerald:#34d399; --blue:#0ea5e9; --gold:#fbbf24;
+  --text:#9aa7b4; --bright:#e8eef2;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:"Space Grotesk",system-ui,sans-serif;
+  font-size:17px; line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--emerald); color:var(--bg)}
+a{color:inherit}
+.wrap{max-width:920px; margin:0 auto; padding:0 24px}
+
+/* Header */
+header{padding-top:28px; padding-bottom:28px}
+header .wrap{display:flex; align-items:center; justify-content:space-between}
+.mark{
+  font-family:"Unbounded",sans-serif; font-weight:800; font-size:1.05rem;
+  letter-spacing:.04em; text-decoration:none;
+  background:linear-gradient(90deg,var(--emerald),var(--blue));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.header-cta{
+  font-family:"IBM Plex Mono",monospace; font-size:.85rem; text-decoration:none;
+  color:var(--bright); border:1px solid var(--line); border-radius:6px;
+  padding:9px 16px; transition:border-color .2s;
+}
+.header-cta:hover,.header-cta:focus-visible{border-color:var(--emerald)}
+
+/* Hero */
+.hero{padding-top:72px; padding-bottom:40px}
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace; font-size:.8rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--gold); margin-bottom:20px;
+}
+h1{
+  font-family:"Unbounded",sans-serif; font-weight:800;
+  font-size:clamp(2.6rem,9vw,5.2rem); line-height:1.04; letter-spacing:.01em;
+  background:linear-gradient(92deg,var(--emerald) 15%,var(--blue) 85%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  margin-bottom:26px;
+}
+.hero p{max-width:34em; font-size:1.12rem}
+.hero p strong{color:var(--bright); font-weight:500}
+.cta-row{display:flex; gap:14px; flex-wrap:wrap; margin-top:36px}
+.btn{
+  display:inline-block;
+  font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:1rem;
+  text-decoration:none; border-radius:8px; padding:14px 26px;
+  transition:transform .15s, box-shadow .15s;
+}
+.btn-primary{
+  background:linear-gradient(92deg,var(--emerald),var(--blue));
+  color:#06232b;
+}
+.btn-primary:hover,.btn-primary:focus-visible{transform:translateY(-2px); box-shadow:0 8px 28px rgba(52,211,153,.25)}
+.btn-ghost{color:var(--bright); border:1px solid var(--line)}
+.btn-ghost:hover,.btn-ghost:focus-visible{border-color:var(--blue)}
+
+/* Reboot-Log */
+.console{margin:64px auto 0}
+.console-frame{
+  background:var(--surface); border:1px solid var(--line); border-radius:10px;
+  overflow:hidden;
+}
+.console-bar{
+  display:flex; align-items:center; gap:8px;
+  padding:10px 16px; border-bottom:1px solid var(--line);
+  font-family:"IBM Plex Mono",monospace; font-size:.78rem; color:#5c6b78;
+}
+.console-bar .dot{width:9px; height:9px; border-radius:50%; background:var(--line)}
+.console-body{
+  font-family:"IBM Plex Mono",monospace; font-size:.88rem; line-height:2.05;
+  padding:22px 22px 26px; min-height:258px;
+}
+.log-line{display:block; visibility:hidden; white-space:pre-wrap}
+.log-line.shown{visibility:visible}
+.log-t{color:#5c6b78}
+.log-ok{color:var(--emerald)}
+.log-err{color:#f87171}
+.log-gold{color:var(--gold)}
+.log-bright{color:var(--bright)}
+.cursor{
+  display:inline-block; width:9px; height:1.1em; margin-left:2px;
+  background:var(--emerald); vertical-align:text-bottom;
+  animation:blink 1s steps(1) infinite;
+}
+@keyframes blink{50%{opacity:0}}
+
+/* Facts */
+.facts-wrap{margin:72px auto 0}
+.facts{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden}
+.fact{background:var(--bg); padding:26px 22px}
+.fact .k{font-family:"IBM Plex Mono",monospace; font-size:.75rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:8px}
+.fact .v{color:var(--bright); font-weight:500}
+
+/* Diesmal richtig */
+.promise{padding-top:88px}
+h2{
+  font-family:"Unbounded",sans-serif; font-weight:500; font-size:1.5rem;
+  color:var(--bright); margin-bottom:14px;
+}
+.promise .lead{max-width:36em; margin-bottom:34px}
+.promise ul{list-style:none; display:grid; gap:0}
+.promise li{
+  display:flex; gap:16px; align-items:baseline;
+  padding:16px 4px; border-top:1px solid var(--line);
+}
+.promise li:last-child{border-bottom:1px solid var(--line)}
+.promise .tick{font-family:"IBM Plex Mono",monospace; color:var(--emerald); flex-shrink:0}
+.promise li b{color:var(--bright); font-weight:500}
+
+/* Veteran */
+.veteran{
+  margin:88px auto 0; padding:34px 30px;
+  border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:0 10px 10px 0;
+}
+.veteran p{max-width:38em}
+.veteran .q{color:var(--bright); font-style:italic}
+.veteran a{color:var(--gold); text-decoration-color:rgba(251,191,36,.4)}
+
+/* Footer */
+footer{margin-top:100px; border-top:1px solid var(--line); padding-top:34px; padding-bottom:44px}
+footer .wrap{display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap; font-size:.9rem}
+footer nav{display:flex; gap:22px}
+footer a{text-decoration:none; color:var(--text)}
+footer a:hover,footer a:focus-visible{color:var(--bright)}
+.foot-mark{font-family:"IBM Plex Mono",monospace; color:#5c6b78}
+
+@media (max-width:640px){
+  .facts{grid-template-columns:1fr}
+  .console-body{font-size:.8rem; min-height:0}
+  .hero{padding-top:48px}
+}
+@media (prefers-reduced-motion:reduce){
+  .cursor{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="mark" href="/">GARMOPOL</a>
+    <a class="header-cta" href="https://discord.gg/KQ2MnZQvVG">discord beitreten</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <p class="eyebrow">Citybuild-Netzwerk · Season 2</p>
+    <h1>GARMOPOL<br>KOMMT ZURÜCK</h1>
+    <p>Der Server, auf dem du 2023 deine erste Farm gebaut hast, startet neu.
+    <strong>Diesmal mit eigener Technik, eigenen Plugins und einer Economy, die nicht nervt.</strong>
+    Kein Datum, keine IP — noch nicht. Wer es zuerst erfahren will, ist im Discord.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://discord.gg/KQ2MnZQvVG">Zum Discord</a>
+      <a class="btn btn-ghost" href="https://www.tiktok.com/@garmopol">TikTok ansehen</a>
+    </div>
+  </section>
+
+  <section class="console wrap" aria-label="Server-Log: die Garmopol-Geschichte">
+    <div class="console-frame">
+      <div class="console-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span>garmopol — systemlog</span>
+      </div>
+      <div class="console-body" id="log">
+        <span class="log-line"><span class="log-t">[2022-12]</span> <span class="log-ok">boot</span> <span class="log-bright">Garmopol Netzwerk gestartet.</span></span>
+        <span class="log-line"><span class="log-t">[2023-08]</span> <span class="log-ok">peak</span> 200 Member. Airlines-Flüge im Voice. Beste Zeit.</span>
+        <span class="log-line"><span class="log-t">[2023-11]</span> <span class="log-err">fatal</span> Host insolvent. Alle Daten weg.</span>
+        <span class="log-line"><span class="log-t">[2024-07]</span> <span class="log-ok">retry</span> Garmopol 2.0 released.</span>
+        <span class="log-line"><span class="log-t">[2024-10]</span> <span class="log-err">halt</span> Server offline. Chat wird zum Museum.</span>
+        <span class="log-line"><span class="log-t">[2026-06]</span> <span class="log-t">info</span> "Die Zeiten sind vorbei."</span>
+        <span class="log-line"><span class="log-t">[2026-07]</span> <span class="log-gold">reboot</span> <span class="log-bright">Falsch. Season 2 in Aufbau.</span><span class="cursor" aria-hidden="true"></span></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="facts-wrap wrap" aria-label="Eckdaten">
+    <div class="facts">
+      <div class="fact"><span class="k">Modi</span><span class="v">Citybuild + SMP</span></div>
+      <div class="fact"><span class="k">Zugang</span><span class="v">Java + Bedrock</span></div>
+      <div class="fact"><span class="k">Technik</span><span class="v">Eigene Plugins, selbst gecodet</span></div>
+    </div>
+  </section>
+
+  <section class="promise wrap">
+    <h2>Diesmal richtig.</h2>
+    <p class="lead">Wir haben jede Beschwerde und jeden Vorschlag aus zwei Jahren gelesen.
+    Season 2 startet erst, wenn das hier fertig ist — versprochen wird nur, was gebaut ist:</p>
+    <ul>
+      <li><span class="tick">✓</span><span><b>Economy, die fair bleibt.</b> Preise stehen vor dem Start fest. Danach wird gebufft, nie generft.</span></li>
+      <li><span class="tick">✓</span><span><b>Auktionshaus ab Tag 1.</b> Funktioniert. Wirklich.</span></li>
+      <li><span class="tick">✓</span><span><b>Vote-Belohnungen und /playtime.</b> Die alten Versprechen, eingelöst.</span></li>
+      <li><span class="tick">✓</span><span><b>Events jeden Samstag.</b> Fester Kalender statt toter Wochen.</span></li>
+      <li><span class="tick">✓</span><span><b>Deine Stimme zählt.</b> Vorschläge bekommen im Discord ein Voting und einen sichtbaren Status.</span></li>
+    </ul>
+  </section>
+
+  <section class="veteran wrap">
+    <h2>Du warst dabei?</h2>
+    <p><span class="q">"Boa, peak Garmopol-Zeiten 2023."</span> — steht so im alten Chat.
+    Wenn du Season 1 gespielt hast, wartet im Discord die
+    <a href="https://discord.gg/KQ2MnZQvVG">Season-1-Veteran-Rolle</a> auf dich.
+    Die neue Map ist neu. Die Leute sind die alten.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="foot-mark">garmopol.net</span>
+    <nav>
+      <a href="https://discord.gg/KQ2MnZQvVG">Discord</a>
+      <a href="https://www.tiktok.com/@garmopol">TikTok</a>
+      <a href="mailto:garmopol@gmail.com">Kontakt</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var lines = document.querySelectorAll(".log-line");
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduced || !("IntersectionObserver" in window)) {
+    lines.forEach(function(l){ l.classList.add("shown"); });
+    return;
+  }
+  var started = false;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting && !started) {
+        started = true;
+        io.disconnect();
+        lines.forEach(function(l, i){
+          setTimeout(function(){ l.classList.add("shown"); }, 350 + i * 520);
+        });
+      }
+    });
+  }, {threshold: 0.35});
+  io.observe(document.getElementById("log"));
+})();
+</script>
+</body>
+</html>
