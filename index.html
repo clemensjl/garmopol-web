@@ -9,86 +9,109 @@
 <meta property="og:description" content="Der Server, mit dem du 2023 gespielt hast, kommt zurück. Season 2 in Aufbau.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://garmopol.net">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230a0f14'/%3E%3Crect x='4' y='2' width='8' height='2' fill='%23fbbf24'/%3E%3Crect x='2' y='4' width='2' height='8' fill='%23fbbf24'/%3E%3Crect x='12' y='4' width='2' height='8' fill='%23fbbf24'/%3E%3Crect x='4' y='12' width='8' height='2' fill='%23fbbf24'/%3E%3Crect x='6' y='6' width='4' height='2' fill='%23fbbf24'/%3E%3Crect x='8' y='8' width='2' height='2' fill='%23fbbf24'/%3E%3C/svg%3E">
+<meta property="og:image" content="https://garmopol.net/logo.png">
+<link rel="icon" type="image/png" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Rubik:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0a0f14; --surface:#101820; --line:#1c2833;
-  --emerald:#34d399; --blue:#0ea5e9; --gold:#fbbf24;
-  --text:#9aa7b4; --bright:#e8eef2;
+  --bg:#0e1115;        /* Bedrock */
+  --stone:#1a2028;     /* Stein-Flaeche */
+  --stone2:#232b36;    /* Stein hell */
+  --edge:#000;         /* Blockkante */
+  --blue:#2ea8ff;      /* das G */
+  --blue-deep:#1668b8;
+  --emerald:#37c85c;   /* Erz-Akzente */
+  --redstone:#e4383b;
+  --diamond:#35d6e8;
+  --gold:#f5c542;
+  --text:#aab6c2; --bright:#f0f4f8;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
 body{
   background:var(--bg); color:var(--text);
-  font-family:"Space Grotesk",system-ui,sans-serif;
+  font-family:"Rubik",system-ui,sans-serif;
   font-size:17px; line-height:1.65;
   -webkit-font-smoothing:antialiased;
 }
-::selection{background:var(--emerald); color:var(--bg)}
-a{color:inherit}
-.wrap{max-width:920px; margin:0 auto; padding:0 24px}
+::selection{background:var(--blue); color:#04121f}
+.wrap{max-width:920px; margin-left:auto; margin-right:auto; padding-left:24px; padding-right:24px}
+img{image-rendering:auto}
+
+/* Pixel-Erz-Trenner: kleine Quadrate wie die Adern im Logo */
+.ore{display:flex; gap:6px; margin:14px 0 0}
+.ore i{width:8px; height:8px; display:block}
+.ore i:nth-child(1){background:var(--emerald)}
+.ore i:nth-child(2){background:var(--diamond)}
+.ore i:nth-child(3){background:var(--redstone)}
+.ore i:nth-child(4){background:var(--stone2)}
+
+/* Minecraft-Buttons: klobig, harte Kante, dunkler Sockel */
+.btn{
+  display:inline-block; text-decoration:none; text-align:center;
+  font-family:"Rubik",sans-serif; font-weight:700; font-size:1rem;
+  padding:13px 26px; border:2px solid var(--edge); border-radius:0;
+  box-shadow:inset 0 -5px 0 rgba(0,0,0,.38), inset 0 2px 0 rgba(255,255,255,.22), 0 3px 0 var(--edge);
+  transition:transform .08s;
+}
+.btn:active{transform:translateY(3px); box-shadow:inset 0 -2px 0 rgba(0,0,0,.38), inset 0 2px 0 rgba(255,255,255,.18), 0 0 0 var(--edge)}
+.btn-primary{background:var(--blue); color:#04121f}
+.btn-primary:hover,.btn-primary:focus-visible{background:#4cb6ff}
+.btn-stone{background:#6d7887; color:var(--bright)}
+.btn-stone:hover,.btn-stone:focus-visible{background:#7e8a9a}
+
+/* Stein-Karten: harte Kanten, Blockschatten */
+.card{
+  background:var(--stone); border:2px solid var(--edge); border-radius:0;
+  box-shadow:0 4px 0 var(--edge);
+}
 
 /* Header */
-header{padding-top:28px; padding-bottom:28px}
-header .wrap{display:flex; align-items:center; justify-content:space-between}
+header{padding-top:22px; padding-bottom:22px}
+header .wrap{display:flex; align-items:center; justify-content:space-between; gap:14px}
+.markrow{display:flex; align-items:center; gap:12px; text-decoration:none}
+.markrow img{width:44px; height:44px}
 .mark{
-  font-family:"Unbounded",sans-serif; font-weight:800; font-size:1.05rem;
-  letter-spacing:.04em; text-decoration:none;
-  background:linear-gradient(90deg,var(--emerald),var(--blue));
-  -webkit-background-clip:text; background-clip:text; color:transparent;
+  font-family:"Pixelify Sans",sans-serif; font-weight:700; font-size:1.35rem;
+  letter-spacing:.02em; color:var(--bright);
 }
 .header-cta{
-  font-family:"IBM Plex Mono",monospace; font-size:.85rem; text-decoration:none;
-  color:var(--bright); border:1px solid var(--line); border-radius:6px;
-  padding:9px 16px; transition:border-color .2s;
+  font-family:"IBM Plex Mono",monospace; font-size:.82rem; text-decoration:none;
+  color:var(--bright); background:var(--stone); border:2px solid var(--edge);
+  box-shadow:0 3px 0 var(--edge); padding:8px 14px;
 }
-.header-cta:hover,.header-cta:focus-visible{border-color:var(--emerald)}
+.header-cta:hover,.header-cta:focus-visible{background:var(--stone2)}
 
 /* Hero */
-.hero{padding-top:72px; padding-bottom:40px}
+.hero{padding-top:64px; padding-bottom:44px; display:flex; gap:44px; align-items:center}
+.hero-text{flex:1}
+.hero-logo{flex-shrink:0; width:220px}
+.hero-logo img{width:100%; height:auto; filter:drop-shadow(0 10px 0 rgba(0,0,0,.45))}
 .eyebrow{
   font-family:"IBM Plex Mono",monospace; font-size:.8rem; letter-spacing:.14em;
-  text-transform:uppercase; color:var(--gold); margin-bottom:20px;
+  text-transform:uppercase; color:var(--diamond); margin-bottom:16px;
 }
 h1{
-  font-family:"Unbounded",sans-serif; font-weight:800;
-  font-size:clamp(2.6rem,9vw,5.2rem); line-height:1.04; letter-spacing:.01em;
-  background:linear-gradient(92deg,var(--emerald) 15%,var(--blue) 85%);
-  -webkit-background-clip:text; background-clip:text; color:transparent;
-  margin-bottom:26px;
+  font-family:"Pixelify Sans",sans-serif; font-weight:700;
+  font-size:clamp(2.4rem,7.5vw,4.3rem); line-height:1.05;
+  color:var(--bright); margin-bottom:8px;
 }
-.hero p{max-width:34em; font-size:1.12rem}
+h1 .g{color:var(--blue)}
+.hero p{max-width:32em; margin-top:18px}
 .hero p strong{color:var(--bright); font-weight:500}
-.cta-row{display:flex; gap:14px; flex-wrap:wrap; margin-top:36px}
-.btn{
-  display:inline-block;
-  font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:1rem;
-  text-decoration:none; border-radius:8px; padding:14px 26px;
-  transition:transform .15s, box-shadow .15s;
-}
-.btn-primary{
-  background:linear-gradient(92deg,var(--emerald),var(--blue));
-  color:#06232b;
-}
-.btn-primary:hover,.btn-primary:focus-visible{transform:translateY(-2px); box-shadow:0 8px 28px rgba(52,211,153,.25)}
-.btn-ghost{color:var(--bright); border:1px solid var(--line)}
-.btn-ghost:hover,.btn-ghost:focus-visible{border-color:var(--blue)}
+.cta-row{display:flex; gap:16px; flex-wrap:wrap; margin-top:32px}
 
-/* Reboot-Log */
-.console{margin:64px auto 0}
-.console-frame{
-  background:var(--surface); border:1px solid var(--line); border-radius:10px;
-  overflow:hidden;
-}
+/* Terminal (bleibt) */
+.console{margin:56px auto 0}
+.console-frame{background:#101820; border:2px solid var(--edge); box-shadow:0 4px 0 var(--edge); overflow:hidden}
 .console-bar{
   display:flex; align-items:center; gap:8px;
-  padding:10px 16px; border-bottom:1px solid var(--line);
+  padding:10px 16px; border-bottom:2px solid var(--edge);
   font-family:"IBM Plex Mono",monospace; font-size:.78rem; color:#5c6b78;
+  background:var(--stone);
 }
-.console-bar .dot{width:9px; height:9px; border-radius:50%; background:var(--line)}
+.console-bar .dot{width:9px; height:9px; background:#39434f}
 .console-body{
   font-family:"IBM Plex Mono",monospace; font-size:.88rem; line-height:2.05;
   padding:22px 22px 26px; min-height:258px;
@@ -97,7 +120,7 @@ h1{
 .log-line.shown{visibility:visible}
 .log-t{color:#5c6b78}
 .log-ok{color:var(--emerald)}
-.log-err{color:#f87171}
+.log-err{color:var(--redstone)}
 .log-gold{color:var(--gold)}
 .log-bright{color:var(--bright)}
 .cursor{
@@ -107,54 +130,54 @@ h1{
 }
 @keyframes blink{50%{opacity:0}}
 
-/* Facts */
-.facts-wrap{margin:72px auto 0}
-.facts{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden}
-.fact{background:var(--bg); padding:26px 22px}
-.fact .k{font-family:"IBM Plex Mono",monospace; font-size:.75rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:8px}
+/* Fakten: Stein-Bloecke mit Erzfarben-Label */
+.facts-wrap{margin:64px auto 0}
+.facts{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+.fact{padding:22px 20px}
+.fact .k{font-family:"IBM Plex Mono",monospace; font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; display:block; margin-bottom:6px}
+.fact:nth-child(1) .k{color:var(--emerald)}
+.fact:nth-child(2) .k{color:var(--diamond)}
+.fact:nth-child(3) .k{color:var(--redstone)}
 .fact .v{color:var(--bright); font-weight:500}
 
 /* Diesmal richtig */
-.promise{padding-top:88px}
+.promise{padding-top:80px}
 h2{
-  font-family:"Unbounded",sans-serif; font-weight:500; font-size:1.5rem;
-  color:var(--bright); margin-bottom:14px;
+  font-family:"Pixelify Sans",sans-serif; font-weight:700; font-size:1.7rem;
+  color:var(--bright); margin-bottom:12px;
 }
-.promise .lead{max-width:36em; margin-bottom:34px}
-.promise ul{list-style:none; display:grid; gap:0}
+.promise .lead{max-width:36em; margin-bottom:30px}
+.promise ul{list-style:none}
 .promise li{
   display:flex; gap:16px; align-items:baseline;
-  padding:16px 4px; border-top:1px solid var(--line);
+  padding:15px 4px; border-top:2px solid var(--stone2);
 }
-.promise li:last-child{border-bottom:1px solid var(--line)}
+.promise li:last-child{border-bottom:2px solid var(--stone2)}
 .promise .tick{font-family:"IBM Plex Mono",monospace; color:var(--emerald); flex-shrink:0}
 .promise li b{color:var(--bright); font-weight:500}
 
 /* Veteran */
-.veteran{
-  margin:88px auto 0; padding:34px 30px;
-  border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:0 10px 10px 0;
-}
+.veteran{margin:80px auto 0; padding:30px 28px; border-left:6px solid var(--gold)}
 .veteran p{max-width:38em}
 .veteran .q{color:var(--bright); font-style:italic}
-.veteran a{color:var(--gold); text-decoration-color:rgba(251,191,36,.4)}
+.veteran a{color:var(--gold)}
 
 /* Footer */
-footer{margin-top:100px; border-top:1px solid var(--line); padding-top:34px; padding-bottom:44px}
+footer{margin-top:96px; border-top:2px solid var(--stone2); padding-top:30px; padding-bottom:42px}
 footer .wrap{display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap; font-size:.9rem}
 footer nav{display:flex; gap:22px}
 footer a{text-decoration:none; color:var(--text)}
 footer a:hover,footer a:focus-visible{color:var(--bright)}
 .foot-mark{font-family:"IBM Plex Mono",monospace; color:#5c6b78}
 
-@media (max-width:640px){
+@media (max-width:760px){
+  .hero{flex-direction:column-reverse; gap:26px; text-align:left; padding-top:40px}
+  .hero-logo{width:150px}
   .facts{grid-template-columns:1fr}
   .console-body{font-size:.8rem; min-height:0}
-  .hero{padding-top:48px}
 }
 @media (prefers-reduced-motion:reduce){
   .cursor{animation:none}
-  html{scroll-behavior:auto}
 }
 </style>
 </head>
@@ -162,21 +185,30 @@ footer a:hover,footer a:focus-visible{color:var(--bright)}
 
 <header>
   <div class="wrap">
-    <a class="mark" href="/">GARMOPOL</a>
+    <a class="markrow" href="/">
+      <img src="logo.png" alt="" width="44" height="44">
+      <span class="mark">Garmopol</span>
+    </a>
     <a class="header-cta" href="https://discord.gg/KQ2MnZQvVG">discord beitreten</a>
   </div>
 </header>
 
 <main>
   <section class="hero wrap">
-    <p class="eyebrow">Citybuild-Netzwerk · Season 2</p>
-    <h1>GARMOPOL<br>KOMMT ZURÜCK</h1>
-    <p>Der Server, auf dem du 2023 deine erste Farm gebaut hast, startet neu.
-    <strong>Diesmal mit eigener Technik, eigenen Plugins und einer Economy, die nicht nervt.</strong>
-    Kein Datum, keine IP — noch nicht. Wer es zuerst erfahren will, ist im Discord.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="https://discord.gg/KQ2MnZQvVG">Zum Discord</a>
-      <a class="btn btn-ghost" href="https://www.tiktok.com/@garmopol">TikTok ansehen</a>
+    <div class="hero-text">
+      <p class="eyebrow">Citybuild-Netzwerk · Season 2</p>
+      <h1><span class="g">Garmopol</span><br>kommt zurück</h1>
+      <div class="ore" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <p>Der Server, auf dem du 2023 deine erste Farm gebaut hast, startet neu.
+      <strong>Diesmal mit eigener Technik, eigenen Plugins und einer Economy, die nicht nervt.</strong>
+      Kein Datum, keine IP — noch nicht. Wer es zuerst erfahren will, ist im Discord.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://discord.gg/KQ2MnZQvVG">Zum Discord</a>
+        <a class="btn btn-stone" href="https://www.tiktok.com/@garmopol">TikTok ansehen</a>
+      </div>
+    </div>
+    <div class="hero-logo">
+      <img src="logo.png" alt="Garmopol-Logo: blaues G auf Steinbrocken mit Erz-Adern" width="220" height="220">
     </div>
   </section>
 
@@ -200,9 +232,9 @@ footer a:hover,footer a:focus-visible{color:var(--bright)}
 
   <section class="facts-wrap wrap" aria-label="Eckdaten">
     <div class="facts">
-      <div class="fact"><span class="k">Modi</span><span class="v">Citybuild + SMP</span></div>
-      <div class="fact"><span class="k">Zugang</span><span class="v">Java + Bedrock</span></div>
-      <div class="fact"><span class="k">Technik</span><span class="v">Eigene Plugins, selbst gecodet</span></div>
+      <div class="fact card"><span class="k">Modi</span><span class="v">Citybuild + SMP</span></div>
+      <div class="fact card"><span class="k">Zugang</span><span class="v">Java + Bedrock</span></div>
+      <div class="fact card"><span class="k">Technik</span><span class="v">Eigene Plugins, selbst gecodet</span></div>
     </div>
   </section>
 
@@ -219,7 +251,7 @@ footer a:hover,footer a:focus-visible{color:var(--bright)}
     </ul>
   </section>
 
-  <section class="veteran wrap">
+  <section class="veteran card wrap">
     <h2>Du warst dabei?</h2>
     <p><span class="q">"Boa, peak Garmopol-Zeiten 2023."</span> — steht so im alten Chat.
     Wenn du Season 1 gespielt hast, wartet im Discord die
