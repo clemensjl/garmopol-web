@@ -2,7 +2,7 @@
 
 Landing-Page des Minecraft-Servers Garmopol (Season 2 in Aufbau): <https://garmopol.net>
 
-Statische Seite (eine `index.html`, selbst gehostete Schriften), ausgeliefert über GitHub Pages. Quelle liegt im privaten Hauptrepo (garmopol/website/) — Aenderungen dort machen, hierher deployen. Das Projekt ist seit 31.10.2026 gestoppt.
+Statische Seite (eine `index.html`, selbst gehostete Schriften), ausgeliefert über GitHub Pages. Quelle liegt im privaten Hauptrepo (garmopol/website/) — Aenderungen dort machen, hierher deployen.
 
 ## Lokal ansehen
 
