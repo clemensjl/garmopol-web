@@ -12,4 +12,4 @@ npx serve .
 
 ## License
 
-Der Code steht unter der [MIT License](LICENSE). Logo, Name "Garmopol" und Texte fallen nicht darunter. Die Schriften in `fonts/` (Rubik, Pixelify Sans, IBM Plex Mono) stehen unter der SIL Open Font License 1.1.
+Der Code steht unter der [MIT License](LICENSE). Logo, Name "Garmopol" und Texte fallen nicht darunter. Die Schriften in `fonts/` (Rubik, Pixelify Sans, IBM Plex Mono) stehen unter der SIL Open Font License 1.1, die Lizenztexte liegen in `fonts/OFL-*.txt`.
